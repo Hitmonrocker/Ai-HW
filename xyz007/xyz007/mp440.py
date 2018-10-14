@@ -9,23 +9,31 @@ import queue
 '''
 BFS add to queue 
 '''
+queueBFS = Queue()
+queueDFS = Queue()
+queueA = Queue()
+queueUC = Queue()
+
 def add_to_queue_BFS(node_id, parent_node_id, cost, initialize=False):
-    # Your code here
+	node = [node_id,parent_node_id]
+	queueBFS.put(node)
      return
 
 '''
 BFS add to queue 
 '''
 def is_queue_empty_BFS():
-    # Your code here
-    return False
+    return queueBFS.empty();
 
 '''
 BFS pop from queue
 '''
 def pop_front_BFS():
     (node_id, parent_node_id) = (0, 0)
-    # Your code here
+    if(queueBFS.qsize() >0):
+    	node = queueBFS.get()
+    	node_id = node[0]
+    	parent_node_id = node[1]
     return (node_id, parent_node_id)
 
 '''
@@ -39,8 +47,7 @@ def add_to_queue_DFS(node_id, parent_node_id, cost, initialize=False):
 DFS add to queue 
 '''
 def is_queue_empty_DFS():
-    # Your code here
-    return False
+   return queueDFS.empty()
 
 '''
 DFS pop from queue
@@ -61,8 +68,7 @@ def add_to_queue_UC(node_id, parent_node_id, cost, initialize=False):
 UC add to queue 
 '''
 def is_queue_empty_UC():
-    # Your code here
-    return False
+   return queueUC.empty()
 
 '''
 UC pop from queue
@@ -83,8 +89,7 @@ def add_to_queue_ASTAR(node_id, parent_node_id, cost, initialize=False):
 A* add to queue 
 '''
 def is_queue_empty_ASTAR():
-    # Your code here
-    return False
+   return queueA.empty()
 
 '''
 A* pop from queue
@@ -136,12 +141,9 @@ def hill_desending_n_queens(state, comp_att_pairs):
     new_state = state;
     num_atk = 0;
     while(new_state != final_state):
-    	
     	num_atk = comp_att_pairs(new_state)
-
 		if(num_atk == 0)
     		return final_state;
-
 		for x in xrange(len(state),0,-1):
 			if(comp_att_pairs(state[x]+1)<num_atk && (state[x]+1)<7):
 				state[x]+=1;
